@@ -9,7 +9,7 @@ import com.douzone.mysite.vo.SiteVo;
 
 @Repository
 public class AdminRepository {
-	@Autowired
+	@Autowired(required = true)
 	private SqlSession sqlSession;
 	
 	public SiteVo findAll() {
