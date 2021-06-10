@@ -8,19 +8,81 @@
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js" type="text/javascript"/></script>
+<script >
+$(function(){
+	btn = $('#btn-check');
+	btn.click(function(){
+		var email = $("#email").val();
+		if(email == ""){
+			return;
+		}
+		$.ajax({
+			url: "/mysite03/user/api/checkemail?email=" + email,
+			type: "get",
+			dataType: "json",
+			error: function(xhr, status, e){
+				console.error(status, e);
+			},
+			success: function(response){
+				console.log(response)
+				if(response.result != "success"){
+					console.error(response.message);
+					return;
+				}
+				
+				if(response.data){
+					alert("존재하는 이메일입니다. 다른 이메일을 사용하세요.");
+					$("#email").val("");
+					$("#email").focus();
+					return;
+				}
+				
+				$("#btn-check").hide();
+				$("#img-check").show();
+			}
+		});
+	});
+});
+
+</script>
+<!--  
+<script>
+i =10
+f= function(){
+	
+}
+$(function(){	
+	btn = $('#btn-check');
+	btn.click(function(){
+		consol.log("...");
+	});
+});
+
+$(f)
+$('#btn-check');
+el = document.getElementByid("btn-check");
+consol.log(el);
+window.onload = function(){
+	el = document.getElementById("btn-check");
+	console.log(el);
+}
+</script>
+-->
 </head>
 <body>
 	<div id="container">
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="user">
-				<form id="join-form" name="joinForm" method="post" action="${pageContext.request.contextPath }/user">
+				<form id="join-form" name="joinForm" method="post" action="${pageContext.request.contextPath }/user/join">
 					<label class="block-label" for="name">이름</label>
 					<input id="name" name="name" type="text" value="">
 
 					<label class="block-label" for="email">이메일</label>
 					<input id="email" name="email" type="text" value="">
-					<input type="button" value="id 중복체크">
+					<input id="btn-check" type="button" value="id 중복체크">
+					<img id="img-check" src="${pageContext.request.contextPath }/assets/images/icon.png" style="width: 18px; display:none">
 					
 					<label class="block-label">패스워드</label>
 					<input name="password" type="password" value="">

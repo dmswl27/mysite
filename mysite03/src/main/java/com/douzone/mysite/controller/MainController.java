@@ -30,9 +30,10 @@ public class MainController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/msg")
+	@RequestMapping("/msg1")
 	public UserVo msg(@AuthUser UserVo vo) {
 
 		return vo;
 	}
+	
 }

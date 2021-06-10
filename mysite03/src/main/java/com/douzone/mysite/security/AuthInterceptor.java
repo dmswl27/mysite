@@ -36,7 +36,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 		
-		System.out.println("여기");
 		
 		//6. @Auth가 붙어 있기 때문에 인증(Authenfication) 여부 확인
 		HttpSession session = request.getSession();
@@ -54,18 +53,15 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		// 7. 권한(Authorizeation) 체크를 위해서 @Auth의 role 가져오기()
 		String role = auth.role();
 		String authRole = authUser.getRole();
-		System.out.println(role + "22222222222222" + authRole);
 		if("ADMIN".equals(role)) {
-			System.out.println("aaaaa");
-//			return true;
+//			if(!"ADMIN".equals(authRole)) {
+			if("USER".equals(authRole)) {
+				response.sendRedirect(request.getContextPath());
+//				request.getRequestDispatcher("/WEB-INF/views/admin/main.jsp").forward(request, response);
+				return false;
+			}
 		}
-		System.out.println(role + "22222222222222" + authRole);
-		if("USER".equals(authRole)) {
-			System.out.println("gbbb");
-			response.sendRedirect(request.getContextPath());
-			return false;
-		}
-		
+				
 		return true;
 	}
 
