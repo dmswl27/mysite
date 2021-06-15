@@ -9,7 +9,7 @@
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link
-	href="${pageContext.servletContext.contextPath }/assets/css/board.css"
+	href="${pageContext.request.contextPath }/assets/css/board.css"
 	rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -17,7 +17,7 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="board">
-				<form id="search_form" action="${pageContext.request.contextPath }/board?a=search}" method="post">
+				<form id="search_form" action="${pageContext.request.contextPath }/board}" method="post">
 					<input type="text" id="kwd" name="kwd" value=""> 
 					<input type="submit" value="찾기">
 				</form>
@@ -104,9 +104,7 @@
 				
 			</div>
 		</div>
-		<c:import url="/WEB-INF/views/includes/navigation.jsp">
-			<c:param name="menu" value="board" />
-		</c:import>
+		<c:import url="/WEB-INF/views/includes/navigation.jsp"/>
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 	</div>
 </body>

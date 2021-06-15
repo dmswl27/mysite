@@ -20,6 +20,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
+		System.out.println(email + " fd " + password);
+		
 		UserVo authUser = userService.getUser(email, password);
 		if(authUser == null) {
 			request.setAttribute("email", email);

@@ -11,14 +11,14 @@
 	</appender>
 
 	<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/logex/logex2.log</file>
+		<file>/douzone/log_mysite/log_mysite03.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>
 				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
 			</Pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<FileNamePattern>/logex/logex2.%i.log.zip</FileNamePattern>
+			<FileNamePattern>/douzone/log_mysite/log_mysite03.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>10</MaxIndex>
 		</rollingPolicy>
@@ -34,7 +34,7 @@
 	<!--
 		com.douzone.logex2 아래 패키지 로그들만  \logex\logex2.log 파일에만  출력하는 로거
 	-->
-	<logger name="com.douzone.mysite.exception" level="debug" additivity="false">
+	<logger name="com.douzone.mysite" level="warn" additivity="false">
             <appender-ref ref="fileAppender" />
             <appender-ref ref="consoleAppender" />
     </logger>
