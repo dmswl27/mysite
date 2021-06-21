@@ -9,7 +9,7 @@ package com.douzone.mysite.dto;
  */
 public class JsonResult {
 	private String result; // "success" or "fail"
-	private Object date;    // if succcess, Data set
+	private Object data;    // if succcess, Data set
 	private String message;  // if result, message set
 	
 	private JsonResult() {
@@ -17,7 +17,7 @@ public class JsonResult {
 	}
 	private JsonResult(Object data) {
 		result = "success";
-		this.date = data;
+		this.data = data;
 	}
 	private JsonResult(String message) {
 		result = "fail";
@@ -34,8 +34,8 @@ public class JsonResult {
 	public String getResult() {
 		return result;
 	}
-	public Object getDate() {
-		return date;
+	public Object getData() {
+		return data;
 	}
 	public String getMessage() {
 		return message;
