@@ -1,7 +1,17 @@
 package com.douzone.mysite;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+@EnableAutoConfiguration
 public class BootInitailizer extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		
+		return builder.sources(MysiteApplication.class);
+	}
+	
 
 }
