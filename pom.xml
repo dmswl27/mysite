@@ -71,5 +71,6 @@
 	<module>mysite04</module>
 	<module>mysite05</module>
 	<module>jblog</module>
+	<module>mysite06</module>
 	</modules>
 </project>
