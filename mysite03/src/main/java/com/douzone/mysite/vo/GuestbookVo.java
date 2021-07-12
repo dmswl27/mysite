@@ -3,7 +3,7 @@ package com.douzone.mysite.vo;
 public class GuestbookVo {
 	private long no;
 	private String name;
-	private String passward;
+	private String password;
 	private String regdate;
 	private String message;
 	public long getNo() {
@@ -18,11 +18,11 @@ public class GuestbookVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPassward() {
-		return passward;
+	public String getpassword() {
+		return password;
 	}
-	public void setPassward(String passward) {
-		this.passward = passward;
+	public void setpassword(String password) {
+		this.password = password;
 	}
 	public String getRegdate() {
 		return regdate;
@@ -38,7 +38,7 @@ public class GuestbookVo {
 	}
 	@Override
 	public String toString() {
-		return "GuestbookVo [no=" + no + ", name=" + name + ", passward=" + passward + ", regdate=" + regdate
+		return "GuestbookVo [no=" + no + ", name=" + name + ", password=" + password + ", regdate=" + regdate
 				+ ", message=" + message + "]";
 	}
 

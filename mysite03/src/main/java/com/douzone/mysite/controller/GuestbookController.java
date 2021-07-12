@@ -36,8 +36,8 @@ public class GuestbookController {
 	}
 	@Auth
 	@RequestMapping(value = "/delete/{no}", method = RequestMethod.POST)
-	public String delete(@PathVariable("no") Long no, @RequestParam(value="passward", required=true , defaultValue="") String passward) {
-		guestbookService.deleteMessage(no , passward);
+	public String delete(@PathVariable("no") Long no, @RequestParam(value="password", required=true , defaultValue="") String password) {
+		guestbookService.deleteMessage(no , password);
 		return "redirect:/guestbook";
 	}
 	@Auth
@@ -48,6 +48,10 @@ public class GuestbookController {
 		
 	}
 	
+	@RequestMapping("/spa")
+	public String spaLanding() {
+		return "guestbook/spa-landing";
+	}
 //	@ExceptionHandler(Exception.class)
 //	public String handleUserDaoException() {
 //		// 1. loggin 

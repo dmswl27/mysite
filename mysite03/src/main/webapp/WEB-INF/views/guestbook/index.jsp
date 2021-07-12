@@ -27,7 +27,7 @@ pageContext.setAttribute("newline", "\n");
 							<td>이름</td>
 							<td><input type="text" name="name"></td>
 							<td>비밀번호</td>
-							<td><input type="password" name="passward"></td>
+							<td><input type="password" name="password"></td>
 						</tr>
 						<tr>
 							<td colspan=4><textarea name="message" id="message"></textarea></td>

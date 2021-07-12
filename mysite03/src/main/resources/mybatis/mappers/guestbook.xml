@@ -10,10 +10,25 @@
 		order by reg_date desc
 		]]> 	
 	</select>
+	<select id="findAllById" resultType="guestbookvo">
+		<!-- where 10< no and 4> no 일 경우 ![CDATA[]]를 사용 -->
+		select no, name, date_format(reg_date, '%Y/%m/%d %H:%i:%s') AS regdate, message 
+		   from guestbook 
+		   <if test = '_parameter > 0'>		
+				<![CDATA[
+					WHERE
+						no < #{_parameter}
+				]]>
+			</if>
+		   
+		order by reg_date desc
+			limit 0,3
+			
+	</select>
 	
 	<insert id="insert" parameterType="guestbookvo">
 	<![CDATA[
-	insert into guestbook values (null, #{name}, #{passward}, #{message}, now())
+	insert into guestbook values (null, #{name}, #{password}, #{message}, now())
 	]]>
 	<selectKey keyProperty="no" resultType="long" order="AFTER">
 		<![CDATA[
@@ -24,7 +39,7 @@
 	
 	<delete id="delete" parameterType="guestbookvo">
 	<![CDATA[
-	delete from guestbook where no=#{no} and passward=#{passward}
+	delete from guestbook where no=#{no} and passward=#{password}
 	]]>
 	</delete>
 </mapper>

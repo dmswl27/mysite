@@ -23,6 +23,11 @@ public class GalleryRepository {
 		return sqlSession.selectList("gallery.findAll");
 		
 	}
+	
+	public List<GalleryVo> findAll(Long no) {
+		return sqlSession.selectList("gallery.findAllByNo", no);
+		
+	}
 
 	public void insert(String url) {
 		sqlSession.insert("gallery.insert",url);
